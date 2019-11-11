@@ -92,6 +92,7 @@ class AIDHomeViewController: UIViewController {
 //        view.addSubview(animeKanjiLabel)
 //        view.addSubview(animeSinopsisText)
         view.addSubview(expandableView)
+        expandableView.presenter = self
         view.addSubview(weekCollectionView)
         title = "AID Home"
         

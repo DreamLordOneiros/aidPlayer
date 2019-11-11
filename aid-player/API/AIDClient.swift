@@ -13,7 +13,8 @@ class AIDClient {
     static let shared = AIDClient()
 //    static let baseURL = "https://www.animeid.tv/one-piece"
 //    static let baseURL = "https://www.animeid.tv/kimetsu-no-yaiba"
-    static let baseURL = "https://www.animeid.tv"
+static let baseURL = "https://www.animeid.tv"
+//static let baseURL = "https://www.animeflv.ru/animes"
     
     private init(){}
     
