@@ -91,11 +91,11 @@ extension ExpandableView {
     */
     func showAlertWithTextField() {
         let alertController = UIAlertController(title: "Anime to show", message: nil, preferredStyle: .alert)
-        let confirmAction = UIAlertAction(title: "Show", style: .default) { (_) in
+        let confirmAction = UIAlertAction(title: "Show", style: .default) { [unowned self] (_) in
             if let txtField = alertController.textFields?.first, let animeName = txtField.text {
                 // operations
                 print("Text==>" + animeName)
-                AIDClient.shared.getAnimeCard(with: "/" + animeName, completionHandler: { (card) in
+                AIDClient.shared.getAnimeCard(with: "/" + self.buildSearchPath(with: animeName), completionHandler: { (card) in
 //                    UserDefaults.standard.set(true, forKey: anime!.animeName)
                     let mainSerie = ViewController(card: card)
                     let navVC = UIApplication.shared.keyWindow!.rootViewController as! UINavigationController
@@ -110,5 +110,9 @@ extension ExpandableView {
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         presenter!.present(alertController, animated: true, completion: nil)
+    }
+    
+    func buildSearchPath(with text: String) -> String{
+        return text.replacingOccurrences(of: " ", with: "-").lowercased()
     }
 }
